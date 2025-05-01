@@ -1,7 +1,7 @@
 import { Text } from 'react-native';
 import { Redirect, Stack } from 'expo-router';
 
-import { useSession } from '@context/AuthContext';
+import { useSession } from '@/src/contexts/AuthContext';
 
 export const unstable_settings = {
   initialRouteName: '(protected)/home',

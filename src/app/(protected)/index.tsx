@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 
-import { useSession } from '@context/AuthContext';
+import { useSession } from '@/src/contexts/AuthContext';
 
 export default function Home() {
   const { signOut } = useSession();

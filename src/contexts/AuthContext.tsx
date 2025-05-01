@@ -1,12 +1,9 @@
 import React from "react";
 import { useStorageState } from "@utils/useStorageState";
+import type { AuthContextType, LoginProps } from "../types/Auth";
+import { handleLogin } from "@scripts/Auth";
 
-const AuthContext = React.createContext<{
-  signIn: () => void;
-  signOut: () => void;
-  session?: string | null;
-  isLoading: boolean;
-}>({
+const AuthContext = React.createContext<AuthContextType>({
   signIn: () => null,
   signOut: () => null,
   session: null,
@@ -23,8 +20,14 @@ export function SessionProvider(props: React.PropsWithChildren) {
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => {
-          setSession("John Doe");
+        signIn: async ({login, password}: LoginProps) => {
+          const sessionUser = await handleLogin({login, password}); 
+
+          if (sessionUser) {
+            setSession(JSON.stringify(sessionUser));
+          } else {
+            throw new Error("Error Login");
+          }
         },
         signOut: () => {
           setSession(null);

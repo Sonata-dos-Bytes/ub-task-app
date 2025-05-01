@@ -5,8 +5,10 @@
     "baseUrl": ".",               
     "paths": {
       "@/*": ["./*"],
-      "@utils/*": ["src/utils/*"],
-      "@context/*": ["src/context/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@types/*": ["./src/types/*"],
+      "@context/*": ["./src/contexts/*"],
+      "@scripts/*": ["./src/scripts/*"],
     }
   },
   "include": [
