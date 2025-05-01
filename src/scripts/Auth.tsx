@@ -12,7 +12,13 @@ export async function handleLogin({login, password}: LoginProps): Promise<User> 
           });
 
         if (result.status === 200) {
-            const data: User = result.data.data;
+            const data: User = {
+                ...result.data.data,
+                authorization: {
+                    login: login,
+                    password: password,
+                }
+            };
             return data;
         } else {
             throw new CustomError(result.data.errors[0], "Error_Login");

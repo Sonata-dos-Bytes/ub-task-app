@@ -6,6 +6,7 @@ import { handleLogin } from "@scripts/Auth";
 const AuthContext = React.createContext<AuthContextType>({
   signIn: () => null,
   signOut: () => null,
+  user: () => null,
   session: null,
   isLoading: false,
 });
@@ -31,6 +32,9 @@ export function SessionProvider(props: React.PropsWithChildren) {
         },
         signOut: () => {
           setSession(null);
+        },
+        user: () => {
+          return session ? JSON.parse(session) : null;
         },
         session,
         isLoading,
