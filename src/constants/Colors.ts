@@ -6,11 +6,15 @@ export default {
     secondary: '#FFFFFF',      // branco, para textos em cima do primary
     background: '#FFFFFF',     // fundo das telas
     surface: '#F2F2F2',        // cartões, modais, etc.
-    text: '#333333',           // texto escuro
+    text: '#000000',           // texto escuro
     textLight: '#FFFFFF',      // texto claro
     textDark: '#000000',      // texto escuro
     textLightGray: '#838BA1',  // texto cinza claro
     placeholder: '#888888',    // textos de placeholder
+    error: '#FF0000',        // vermelho para erros
+    success: '#00FF00',      // verde para sucesso
+    warning: '#FFA500',      // laranja para avisos
+    info: '#0000FF',        // azul para informações
   },
   dark: {
     primary: '#8D2C23',        // mantém o vermelho da logo
@@ -23,5 +27,9 @@ export default {
     textDark: '#000000',      // texto escuro
     textLightGray: '#838BA1',  // texto cinza claro
     placeholder: '#AAAAAA',    // placeholder claro
+    error: '#FF0000',        // vermelho para erros
+    success: '#00FF00',      // verde para sucesso
+    warning: '#FFA500',      // laranja para avisos
+    info: '#0000FF',        // azul para informações
   },
 }

@@ -9,6 +9,9 @@
       "@types/*": ["./src/types/*"],
       "@context/*": ["./src/contexts/*"],
       "@scripts/*": ["./src/scripts/*"],
+      "@schemas/*": ["./src/schemas/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@assets/*": ["./src/assets/*"],
     }
   },
   "include": [
