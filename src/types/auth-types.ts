@@ -1,4 +1,4 @@
-import { User } from "./User";
+import { User } from "./user-types";
 
 export interface AuthContextType {
     signIn: ({login, password}: LoginProps) => void;

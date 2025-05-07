@@ -1,4 +1,4 @@
-import { LoginProps } from "./Auth";
+import { LoginProps } from "./auth-types";
 
 export interface User {
     name: string;
