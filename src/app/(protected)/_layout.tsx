@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 import { useSession } from '@/src/contexts/auth-context';
 
 export const unstable_settings = {
-  initialRouteName: '(protected)/home',
+  initialRouteName: '(protected)/index',
 };
 
 export default function AppLayout() {
