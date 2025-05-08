@@ -10,6 +10,7 @@ export default {
     textLight: '#FFFFFF',      // texto claro
     textDark: '#000000',      // texto escuro
     textLightGray: '#838BA1',  // texto cinza claro
+    borderGray: '#E8ECF4',      // texto cinza
     placeholder: '#888888',    // textos de placeholder
     error: '#FF0000',        // vermelho para erros
     success: '#00FF00',      // verde para sucesso

@@ -1,8 +1,8 @@
-import { LoginProps } from "../types/Auth";
+import CustomError from "@/src/utils/custom-error";
 import axios from "axios";
-import { ApiUrl } from "./ApiUrl";
-import { User } from "../types/User";
-import CustomError from "@utils/CustomError";
+import { LoginProps } from "../types/auth-types";
+import { User } from "../types/user-types";
+import { ApiUrl } from "./api-url";
 
 export async function handleLogin({login, password}: LoginProps): Promise<User> {
     try {

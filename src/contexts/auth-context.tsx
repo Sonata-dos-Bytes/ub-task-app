@@ -1,7 +1,7 @@
+import { handleLogin } from "@/src/scripts/auth";
+import { useStorageState } from "@/src/utils/use-storage-state";
 import React from "react";
-import { useStorageState } from "@utils/useStorageState";
-import type { AuthContextType, LoginProps } from "../types/Auth";
-import { handleLogin } from "@scripts/Auth";
+import type { AuthContextType, LoginProps } from "../types/auth-types";
 
 const AuthContext = React.createContext<AuthContextType>({
   signIn: () => null,
