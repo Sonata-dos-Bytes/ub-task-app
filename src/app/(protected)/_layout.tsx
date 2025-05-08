@@ -4,10 +4,10 @@ import { Text } from 'react-native';
 import { useSession } from '@/src/contexts/auth-context';
 
 export const unstable_settings = {
-  initialRouteName: '(protected)/index',
+  initialRouteName: '(protected)/(tabs)',
 };
 
-export default function AppLayout() {
+export default function ProtectedLayout() {
   const { session, isLoading } = useSession();
 
   if (isLoading) {
@@ -17,15 +17,15 @@ export default function AppLayout() {
   if (!session) {
     return <Redirect href="/login" />;
   }
-  
+
   return (
     <Stack>
-        <Stack.Screen 
-            name="index"
-            options={{
-                headerShown: false,
-            }}
-        />
+      <Stack.Screen
+        name="(tabs)"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }
