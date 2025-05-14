@@ -1,0 +1,30 @@
+import CustomError from "@/src/utils/custom-error"
+import axios from "axios"
+import { LoginProps } from "../types/auth-types"
+import { User } from "../types/user-types"
+import { ApiUrl } from "./api-url"
+
+export async function handleTasks({
+  login,
+  password,
+}: LoginProps): Promise<any> {
+  try {
+    console.log("Aquiii", ApiUrl("/ub/ead-ub/tasks"))
+    const result = await axios.post(ApiUrl("/ub/ead-ub/tasks"), {
+      login,
+      password,
+    })
+
+    if (result.status === 200) {
+      const data: any = {
+        ...result.data.data,
+      }
+      return data
+    } else {
+      throw new CustomError(result.data.errors[0], "Error_Login")
+    }
+  } catch (error) {
+    console.log("error", error)
+    throw new CustomError("Error Login", "Error_Search_Point")
+  }
+}

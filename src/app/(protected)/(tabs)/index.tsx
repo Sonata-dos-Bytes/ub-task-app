@@ -2,9 +2,10 @@ import { Text, View, StyleSheet } from "react-native"
 
 import { useSession } from "@/src/contexts/auth-context"
 import Header from "@/src/components/header"
+import Card from "@/src/components/card"
 
 export default function Home() {
-  const { user } = useSession()
+  const { user, tasks } = useSession()
   const userData = user()
 
   return (
@@ -12,7 +13,21 @@ export default function Home() {
       {userData && <Header user={userData} />}
 
       <View style={styles.content}>
-        <Text style={{ ...styles.title }} >Atividades Próximas</Text>
+        <View style={styles.titleContent}>
+          <Text
+            style={{
+              ...styles.title,
+              fontFamily: "Poppins",
+              fontWeight: "700",
+            }}>
+            Atividades Próximas
+          </Text>
+        </View>
+
+        {tasks &&
+          Object.values(tasks).map((task, index) => (
+            <Card key={index} data={task} />
+          ))}
       </View>
     </View>
   )
@@ -22,13 +37,23 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     justifyContent: "flex-start",
-    alignItems: "flex-start",
+    alignItems: "center",
     padding: 16,
+    width: "100%",
+    backgroundColor: "white",
   },
   title: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
     fontSize: 23,
     fontWeight: "bold",
+    color: "#0D1B34",
     textAlign: "left",
-    marginBottom: 30,
+    marginBottom: 10,
+  },
+  titleContent: {
+    width: "100%",
   },
 })

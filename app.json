@@ -4,7 +4,7 @@
     "slug": "ub-task-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "src/assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,29 +13,79 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "src/assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "src/assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
       ],
       "expo-secure-store",
-      "expo-font",
-      "expo-web-browser"
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "src/assets/fonts/Poppins-Regular.ttf",
+            "src/assets/fonts/Poppins-Bold.ttf",
+            "src/assets/fonts/Poppins-Italic.ttf",
+            "src/assets/fonts/Poppins-BoldItalic.ttf",
+            "src/assets/fonts/Poppins-SemiBold.ttf"
+          ],
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Poppins",
+                "fontDefinitions": [
+                  {
+                    "path": "src/assets/fonts/Poppins-Regular.ttf",
+                    "weight": 400
+                  },
+                  {
+                    "path": "src/assets/fonts/Poppins-Bold.ttf",
+                    "weight": 700
+                  },
+                  {
+                    "path": "src/assets/fonts/Poppins-Italic.ttf",
+                    "weight": 400,
+                    "style": "italic"
+                  },
+                  {
+                    "path": "src/assets/fonts/Poppins-BoldItalic.ttf",
+                    "weight": 700,
+                    "style": "italic"
+                  },
+                  {
+                    "path": "src/assets/fonts/Poppins-SemiBold.ttf",
+                    "weight": 600
+                  }
+                ]
+              }
+            ]
+          },
+          "ios": {
+            "fonts": [
+              "src/assets/fonts/Poppins-Regular.ttf",
+              "src/assets/fonts/Poppins-Bold.ttf",
+              "src/assets/fonts/Poppins-Italic.ttf",
+              "src/assets/fonts/Poppins-BoldItalic.ttf",
+              "src/assets/fonts/Poppins-SemiBold.ttf"
+            ]
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
