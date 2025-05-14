@@ -17,8 +17,7 @@ export default function Home() {
           <Text
             style={{
               ...styles.title,
-              fontFamily: "Poppins",
-              fontWeight: "700",
+              fontFamily: "Poppins_700Bold",
             }}>
             Atividades Próximas
           </Text>
@@ -47,11 +46,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    fontSize: 23,
-    fontWeight: "bold",
+    fontSize: 20,
     color: "#0D1B34",
     textAlign: "left",
-    marginBottom: 10,
+    marginBottom: 5,
   },
   titleContent: {
     width: "100%",

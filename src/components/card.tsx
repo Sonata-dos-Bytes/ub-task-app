@@ -1,21 +1,10 @@
 import React from "react"
 import { View, Text, StyleSheet } from "react-native"
-import { MaterialIcons } from "@expo/vector-icons" // Para o ícone de relógio
+import { MaterialIcons } from "@expo/vector-icons"
 import { Task } from "../types/task-types"
 import { getRandomColor } from "../scripts/color"
-import { useFonts } from "expo-font"
-import {
-  Poppins_400Regular,
-  Poppins_700Bold,
-  useFonts as usePoppinsFonts,
-} from "@expo-google-fonts/poppins"
 
 const Card = ({ data }: { data: Task }) => {
-  const [fontsLoaded] = usePoppinsFonts({
-    Poppins_400Regular,
-    Poppins_700Bold,
-  })
-
   return (
     <View style={styles.card}>
       <View style={styles.header}>
@@ -30,16 +19,14 @@ const Card = ({ data }: { data: Task }) => {
           <Text
             style={{
               ...styles.title,
-              fontFamily: "Poppins",
-              fontWeight: "700",
+              fontFamily: "Poppins_700Bold",
             }}>
             {data.title}
           </Text>
           <Text
             style={{
               ...styles.subtitle,
-              fontFamily: "Poppins",
-              fontWeight: "400",
+              fontFamily: "Poppins_600SemiBold",
             }}>
             {data.matter}
           </Text>
@@ -53,8 +40,7 @@ const Card = ({ data }: { data: Task }) => {
         <Text
           style={{
             ...styles.dateText,
-            fontFamily: "Poppins",
-            fontWeight: "400",
+            fontFamily: "Poppins_500Medium",
           }}>
           {data.dateDetailsInPortuguese}
         </Text>
@@ -65,6 +51,9 @@ const Card = ({ data }: { data: Task }) => {
 
 const styles = StyleSheet.create({
   card: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
     backgroundColor: "white",
     padding: 16,
     borderRadius: 12,
@@ -77,6 +66,7 @@ const styles = StyleSheet.create({
     borderColor: "#dbeafe",
     borderWidth: 1,
     width: "100%",
+    minHeight: 160,
   },
   header: {
     flexDirection: "row",
@@ -94,7 +84,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontWeight: "bold",
     color: "#0D1B34",
     fontSize: 16,
   },

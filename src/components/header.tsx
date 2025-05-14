@@ -29,18 +29,23 @@ export default function Header({ user }: { user: IUserData }) {
             )}
           </View>
           <View>
-            <Text style={styles.title}>
+            <Text style={{ ...styles.title, fontFamily: "Poppins_400Regular" }}>
               Olá,{" "}
-              {user.name
-                .split(" ")
-                .slice(0, 2)
-                .map(
-                  (word) =>
-                    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-                )
-                .join(" ")}
+              <Text style={{ fontFamily: "Poppins_600SemiBold" }}>
+                {user.name
+                  .split(" ")
+                  .slice(0, 2)
+                  .map(
+                    (word) =>
+                      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+                  )
+                  .join(" ")}
+              </Text>
             </Text>
-            <Text style={styles.subtitle}>R.A: {user.authorization.login}</Text>
+            <Text
+              style={{ ...styles.subtitle, fontFamily: "Poppins_500Medium" }}>
+              R.A: {user.authorization.login}
+            </Text>
           </View>
         </View>
         <View>
@@ -85,7 +90,6 @@ const styles = StyleSheet.create({
   title: {
     color: "#fff",
     fontSize: 18,
-    fontWeight: "bold",
   },
   subtitle: {
     color: "#fff",
