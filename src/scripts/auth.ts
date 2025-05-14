@@ -21,13 +21,13 @@ export async function handleLogin({login, password}: LoginProps): Promise<User> 
             };
             return data;
         } else {
-            throw new CustomError(result.data.errors[0], "Error_Login");
+            throw new CustomError(result.data.errors[0], "Ocorreu um erro ao fazer login, verifique seu login e senha.");
         }
     } catch (error) {
         console.log("error", error);
         throw new CustomError(
             "Error Login",
-            "Error_Search_Point"
+            "Ocorreu um erro interno, tente novamente mais tarde."
         );
     }
 }
