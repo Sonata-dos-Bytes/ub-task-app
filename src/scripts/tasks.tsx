@@ -9,7 +9,6 @@ export async function handleTasks({
   password,
 }: LoginProps): Promise<any> {
   try {
-    console.log("Aquiii", ApiUrl("/ub/ead-ub/tasks"))
     const result = await axios.post(ApiUrl("/ub/ead-ub/tasks"), {
       login,
       password,
