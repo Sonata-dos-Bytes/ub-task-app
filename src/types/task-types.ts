@@ -1,5 +1,6 @@
 export interface Task {
     title: string;
+    matter: string;
     url: string;
     rawStart: string;
     dateStart: string;
