@@ -1,12 +1,13 @@
-import { Text, View } from 'react-native';
-import { useSession } from '@/src/contexts/auth-context';
-import { useTasks } from '@/src/hooks/use-tasks';
-import { use, useEffect } from 'react';
-import { Link } from 'expo-router';
+import { Text, View, StyleSheet } from "react-native"
+
+import { useSession } from "@/src/contexts/auth-context"
+import Header from "@/src/components/header"
+import { useTasks } from "@/src/hooks/use-tasks"
+import { useEffect } from "react"
 
 export default function Home() {
-  const { user } = useSession();
-  const userData = user();
+  const { user } = useSession()
+  const userData = user()
 
   const { tasks, loading, error, fetchTasks } = useTasks();
 
@@ -15,33 +16,27 @@ export default function Home() {
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Pagina Home</Text>
+    <View style={{ flex: 1 }}>
+      {userData && <Header user={userData} />}
 
-      <Text>Bem vindo {userData?.name}</Text>
-
-      <Text>Login: {userData?.authorization.login}</Text>
-
-      {tasks.map((task, i) => (
-        <Link href={{
-          pathname: `/tasks/task`,
-          params: { 
-            ...task,
-          },
-        }}><Text key={i}>{task.title}</Text></Link>
-      ))}
-
-      <Text
-        onPress={() => {
-          fetchTasks();
-        }}
-        disabled={loading}
-        style={{
-          backgroundColor: loading ? '#ccc' : '#007bff',
-        }}
-        >
-        Recarregar
-      </Text>
+      <View style={styles.content}>
+        <Text style={{ ...styles.title }} >Atividades Próximas</Text>
+      </View>
     </View>
-  );
+  )
 }
+
+const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    padding: 16,
+  },
+  title: {
+    fontSize: 23,
+    fontWeight: "bold",
+    textAlign: "left",
+    marginBottom: 30,
+  },
+})
