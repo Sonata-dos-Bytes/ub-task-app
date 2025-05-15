@@ -3,9 +3,9 @@ export interface Task {
     matter: string;
     url: string;
     rawStart: string;
-    dateStart: Date;
+    dateStart: string;
     rawEnd: string;
-    dateEnd: Date;
+    dateEnd: string;
     daysLeft: number;
     status: string;
     dateDetailsInPortuguese: string;
