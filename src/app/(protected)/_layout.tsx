@@ -26,6 +26,13 @@ export default function ProtectedLayout() {
           headerShown: false,
         }}
       />
+
+      <Stack.Screen
+        name="tasks/task"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }
