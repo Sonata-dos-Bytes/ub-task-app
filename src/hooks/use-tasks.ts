@@ -1,16 +1,22 @@
 import { useState, useEffect, useCallback } from "react";
 import { Task } from "@/src/types/task-types";
-import { LoginProps } from "../types/auth-types";
 import { handleTasks } from "@/src/scripts/tasks";
 import { useSession } from "@/src/contexts/auth-context";
+import { useStorageState } from "../utils/use-storage-state";
 
 export function useTasks() {
     const { user } = useSession();
+    const [[isLoading, session], setSession] = useStorageState("tasks");
+    
     const userData = user();
-
     const [tasks, setTasks] = useState<Task[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        setTasks(session ? JSON.parse(session) : []);
+        fetchTasks();
+    }, []);
 
     const fetchTasks = useCallback(async () => {
         if (!userData) return;
@@ -21,7 +27,7 @@ export function useTasks() {
         try {
             const data = await handleTasks(userData.authorization);
             setTasks(data);
-            // console.log("Tarefas carregadas com sucesso:", data);
+            setSession(JSON.stringify(data));
         } catch (err: any) {
             setError(err?.message ?? "Erro ao carregar as tarefas.");
         } finally {
@@ -29,10 +35,15 @@ export function useTasks() {
         }
     }, [userData]);
 
+    const clean = useCallback(() => {
+        setSession(null);
+    }, []);
+
     return {
         tasks,
         loading,
         error,
         fetchTasks,
+        clean
     };
 }

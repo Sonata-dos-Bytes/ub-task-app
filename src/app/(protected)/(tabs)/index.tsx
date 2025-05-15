@@ -10,9 +10,16 @@ import { useSession } from "@/src/contexts/auth-context"
 import Header from "@/src/components/header"
 import Card from "@/src/components/card"
 import { useState } from "react"
+import { useTasks } from "@/src/hooks/use-tasks"
 
 export default function Home() {
-  const { user, tasks, getTasks } = useSession()
+  const { user } = useSession()
+  const { 
+    tasks,
+    loading,
+    error,
+    fetchTasks 
+  } = useTasks();
   const userData = user()
 
   const [refreshing, setRefreshing] = useState(false)
@@ -24,10 +31,7 @@ export default function Home() {
     setRefreshing(true)
 
     try {
-      await getTasks({
-        login: userData.authorization.login,
-        password: userData.authorization.password,
-      })
+      await fetchTasks();
     } catch (error) {
       console.error("Erro ao atualizar tarefas:", error)
     } finally {
@@ -37,7 +41,7 @@ export default function Home() {
 
   return (
     <View style={{ flex: 1 }}>
-      {userData && <Header user={userData} />}
+      {/* {userData && <Header user={userData} />} */}
 
       <View style={styles.content}>
         <View style={styles.titleContent}>
