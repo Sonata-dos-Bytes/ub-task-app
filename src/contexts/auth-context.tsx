@@ -29,7 +29,8 @@ export function SessionProvider(props: React.PropsWithChildren) {
           const sessionUser = await handleLogin({login, password}); 
 
           if (sessionUser) {
-            const userPicture = saveBase64ToFile(sessionUser.user_picture, "user_picture", "avatar/"); 
+            const userPicture = await saveBase64ToFile(sessionUser.user_picture, "user_picture", "avatar/"); 
+
             setSession(JSON.stringify({
               ...sessionUser,
               user_picture: userPicture,

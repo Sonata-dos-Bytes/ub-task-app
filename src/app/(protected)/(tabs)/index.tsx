@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <View style={{ flex: 1 }}>
-      {/* {userData && <Header user={userData} />} */}
+      {userData && <Header user={userData} />}
 
       <View style={styles.content}>
         <View style={styles.titleContent}>
