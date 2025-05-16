@@ -14,9 +14,13 @@ export function useTasks() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        setTasks(session ? JSON.parse(session) : []);
+        if (session) {
+            setTasks(JSON.parse(session));
+        } else {
+            setTasks([]);
+        }
         fetchTasks();
-    }, []);
+    }, [session]);
 
     const fetchTasks = useCallback(async () => {
         if (!userData) return;

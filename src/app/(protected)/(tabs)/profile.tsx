@@ -55,6 +55,11 @@ export default function Profile() {
             url="https://ead.unibalsas.edu.br/my/"
           />
           <MenuItem
+            title="Sobre"
+            icon="info"
+            url="https://github.com/Sonata-dos-Bytes"
+          />
+          <MenuItem
             title="Sair"
             icon="logout"
             onPress={() => {
