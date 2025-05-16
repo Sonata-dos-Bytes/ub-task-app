@@ -5,13 +5,11 @@ import {
   ScrollView,
   RefreshControl,
 } from "react-native"
-
 import { useSession } from "@/src/contexts/auth-context"
 import Header from "@/src/components/header"
 import Card from "@/src/components/card"
 import { useState } from "react"
 import { useTasks } from "@/src/hooks/use-tasks"
-import { Link } from "expo-router"
 
 export default function Home() {
   const { user } = useSession()
