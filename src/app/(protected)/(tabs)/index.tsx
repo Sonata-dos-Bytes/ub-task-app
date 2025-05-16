@@ -4,12 +4,14 @@ import {
   StyleSheet,
   ScrollView,
   RefreshControl,
+  ActivityIndicator,
 } from "react-native"
 import { useSession } from "@/src/contexts/auth-context"
 import Header from "@/src/components/header"
 import Card from "@/src/components/card"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTasks } from "@/src/hooks/use-tasks"
+import colors from "@/src/constants/colors"
 
 export default function Home() {
   const { user } = useSession()
@@ -17,7 +19,8 @@ export default function Home() {
     tasks,
     loading,
     error,
-    fetchTasks
+    fetchTasks,
+    hasTasks
   } = useTasks();
   const userData = user()
 
@@ -37,6 +40,17 @@ export default function Home() {
       setRefreshing(false)
     }
   }
+
+  const [dotCount, setDotCount] = useState(0);
+  const dots = ".".repeat(dotCount);
+
+  useEffect(() => {
+    if (!loading) return;             
+    const interval = setInterval(() => {
+      setDotCount(dc => (dc + 1) % 4); 
+    }, 500);                           
+    return () => clearInterval(interval);
+  }, [loading]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -58,11 +72,25 @@ export default function Home() {
           contentContainerStyle={styles.scrollContent}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }>
-          {tasks &&
+          }
+        >
+          {hasTasks ? (
             Object.values(tasks).map((task, index) => (
-              <Card key={index} data={task}/>
-            ))}
+              <Card key={index} data={task} />
+            ))
+          ) : (
+            <View style={styles.emptyContainer}>
+              {loading ? (
+                <Text style={styles.emptyText}>
+                  Buscando atividades{dots}
+                </Text>
+              ) : (
+                <Text style={styles.emptyText}>
+                  Não há atividades por enquanto ;)
+                </Text>
+              )}
+            </View>
+          )}
         </ScrollView>
       </View>
     </View>
@@ -100,5 +128,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingBottom: 20,
     width: "100%",
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 40,
+  },
+  emptyText: {
+    fontSize: 16,
+    color: "#94a3b8",
+    fontStyle: "italic",
+    textAlign: "center",
   },
 })

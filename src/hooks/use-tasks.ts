@@ -7,7 +7,7 @@ import { useStorageState } from "../utils/use-storage-state";
 export function useTasks() {
     const { user } = useSession();
     const [[isLoading, session], setSession] = useStorageState("tasks");
-    
+
     const userData = user();
     const [tasks, setTasks] = useState<Task[]>([]);
     const [loading, setLoading] = useState(false);
@@ -21,6 +21,8 @@ export function useTasks() {
         }
         fetchTasks();
     }, [session]);
+
+    const hasTasks = tasks && Object.values(tasks).length > 0;
 
     const fetchTasks = useCallback(async () => {
         if (!userData) return;
@@ -48,6 +50,7 @@ export function useTasks() {
         loading,
         error,
         fetchTasks,
-        clean
+        clean,
+        hasTasks,
     };
 }
