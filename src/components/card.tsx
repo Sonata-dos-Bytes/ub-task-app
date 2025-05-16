@@ -1,12 +1,22 @@
 import React from "react"
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, Pressable } from "react-native"
 import { MaterialIcons } from "@expo/vector-icons"
 import { Task } from "../types/task-types"
 import { getRandomColor } from "../scripts/color"
+import { useRouter } from "expo-router"
 
 const Card = ({ data }: { data: Task }) => {
+  const router = useRouter();
+
+  const handlePress = () => {
+    router.push({
+      pathname: "/tasks/task",
+      params: { ...data },
+    });
+  };
+
   return (
-    <View style={styles.card}>
+    <Pressable style={styles.card} onPress={handlePress}>
       <View style={styles.header}>
         <View
           style={{
@@ -45,7 +55,7 @@ const Card = ({ data }: { data: Task }) => {
           {data.dateDetailsInPortuguese}
         </Text>
       </View>
-    </View>
+    </Pressable>
   )
 }
 

@@ -11,14 +11,15 @@ import Header from "@/src/components/header"
 import Card from "@/src/components/card"
 import { useState } from "react"
 import { useTasks } from "@/src/hooks/use-tasks"
+import { Link } from "expo-router"
 
 export default function Home() {
   const { user } = useSession()
-  const { 
+  const {
     tasks,
     loading,
     error,
-    fetchTasks 
+    fetchTasks
   } = useTasks();
   const userData = user()
 
@@ -62,7 +63,7 @@ export default function Home() {
           }>
           {tasks &&
             Object.values(tasks).map((task, index) => (
-              <Card key={index} data={task} />
+              <Card key={index} data={task}/>
             ))}
         </ScrollView>
       </View>
