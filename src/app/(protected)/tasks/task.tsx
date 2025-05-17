@@ -1,6 +1,6 @@
 import { Task } from '@/src/types/task-types';
-import { router, useLocalSearchParams } from 'expo-router';
-import { Text, View } from 'react-native';
+import { Link, router, useLocalSearchParams } from 'expo-router';
+import { Linking, Text, View } from 'react-native';
 
 export default function TaskDetails() {
     const params = useLocalSearchParams();
@@ -20,8 +20,7 @@ export default function TaskDetails() {
 
             <Text
                 onPress={() => {
-                    // Redirecionar para a página de tarefas
-                    console.log('Redirecionando...');
+                    Linking.openURL(task.url);
                 }}
             >Redirecionar</Text>
         </View>
