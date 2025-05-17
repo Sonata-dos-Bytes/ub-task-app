@@ -6,6 +6,6 @@ export interface IUserData {
   email: string
   language: string
   name: string
-  user_initials: string
-  user_picture: string
+  userInitials: string
+  userPicture: string
 }

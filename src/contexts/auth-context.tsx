@@ -29,11 +29,11 @@ export function SessionProvider(props: React.PropsWithChildren) {
           const sessionUser = await handleLogin({login, password}); 
 
           if (sessionUser) {
-            const userPicture = await saveBase64ToFile(sessionUser.user_picture, "user_picture", "avatar/"); 
+            const userPicture = await saveBase64ToFile(sessionUser.userPicture, "userPicture", "avatar/"); 
 
             setSession(JSON.stringify({
               ...sessionUser,
-              user_picture: userPicture,
+              userPicture: userPicture,
             }));
           } else {
             throw new Error("Error Login");
