@@ -14,7 +14,7 @@ export default function Profile() {
   const userData = user();
 
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.content}>
         <View style={styles.profileHeader}>
           <View style={styles.profilePhoto}>
@@ -68,7 +68,7 @@ export default function Profile() {
           />
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

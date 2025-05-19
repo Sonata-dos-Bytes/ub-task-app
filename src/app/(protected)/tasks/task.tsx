@@ -1,6 +1,6 @@
 import { Task } from "../../../types/task-types";
-import { Link, useLocalSearchParams } from "expo-router";
-import { ActivityIndicator, Linking, Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, View } from "react-native";
+import { Link, useLocalSearchParams, router } from "expo-router";
+import { ActivityIndicator, Linking, Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Text } from "react-native-paper"
 import { Button } from "react-native-magnus";
 import Colors from "../../../constants/colors"
@@ -13,13 +13,26 @@ export default function TaskDetails() {
     const [loading, setLoading] = useState(false)
     const task: Task = params as unknown as Task;
 
+    const onBack = () => {
+        if (Platform.OS === "web") {
+            window.history.back();
+        } else {
+            router.back();
+        }
+    };
+
     return (
-        <View style={{ flex: 1, backgroundColor: "#fff" }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
             <View style={styles.header}>
                 <View style={styles.textContainer}>
-                    <Text style={{ ...styles.title, fontFamily: "Poppins_700Bold" }}>
-                        {task.title}
-                    </Text>
+                    <View style={styles.headerContent}>
+                        <TouchableOpacity onPress={onBack}>  
+                            <MaterialIcons name="arrow-back" size={24} color="#0D1B34" />
+                        </TouchableOpacity>
+                        <Text style={{ ...styles.title, fontFamily: "Poppins_700Bold" }}>
+                            {task.title}
+                        </Text>
+                    </View>
                     <Text style={{ ...styles.subtitle, fontFamily: "Poppins_600SemiBold" }}>
                         {task.matter}
                     </Text>
@@ -71,7 +84,7 @@ export default function TaskDetails() {
                     </Button>
                 </View>
             </SafeAreaView>
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -87,6 +100,13 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         marginBottom: 10,
         overflow: "hidden",
+    },
+    headerContent: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10,
+        marginBottom: 10,
     },
     textContainer: {
         marginTop: 20,
