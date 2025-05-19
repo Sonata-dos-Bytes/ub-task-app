@@ -42,25 +42,7 @@ export default function TaskDetails() {
                     </View>
 
                     <Text style={{ ...styles.descriptionDetails, fontFamily: "Poppins_400Regular" }}>
-                        Documento Final de Modelagem e Documentação Técnica
-                        Objetivos:
-                        Consolidar a modelagem em um único documento formal.
-                        Elaborar um relatório técnico descritivo da solução modelada.
-                        Entregáveis. Documento final contendo:
-                        Introdução e contexto do problema.
-                        Levantamento de requisitos detalhado.
-                        Todos os diagramas modelados.
-                        Descrição textual explicando a modelagem.
-                        Critérios de Avaliação:
-                        Qualidade do documento final e organização das informações.
-                        Adequação dos modelos ao problema proposto.
-                        Coerência na explicação da modelagem.
-                        Consolidar a modelagem em um único documento formal.
-                        Elaborar um relatório técnico descritivo da solução modelada.
-                        Entregáveis. Documento final contendo:
-                        Introdução e contexto do problema.
-                        Levantamento de requisitos detalhado.
-                        Todos os diagramas modelados.
+                        {task.taskDetails}
                     </Text>
                 </ScrollView>
 
