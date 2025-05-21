@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { View, Text, StyleSheet, Pressable } from "react-native"
 import { MaterialIcons } from "@expo/vector-icons"
 import { Task } from "../types/task-types"
@@ -7,6 +7,8 @@ import { useRouter } from "expo-router"
 
 const Card = ({ data }: { data: Task }) => {
   const router = useRouter();
+    const [bgColor] = useState(() => getRandomColor());
+
 
   const handlePress = () => {
     router.push({
@@ -21,7 +23,7 @@ const Card = ({ data }: { data: Task }) => {
         <View
           style={{
             ...styles.iconContainer,
-            backgroundColor: getRandomColor(),
+            backgroundColor: bgColor,
           }}>
           <MaterialIcons name="description" size={24} color="white" />
         </View>
