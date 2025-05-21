@@ -17,9 +17,9 @@ export function useTasks() {
         if (session) {
             setTasks(JSON.parse(session));
         } else {
+            fetchTasks();
             setTasks([]);
         }
-        fetchTasks();
     }, [session]);
 
     const hasTasks = tasks && Object.values(tasks).length > 0;
