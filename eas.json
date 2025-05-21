@@ -3,19 +3,16 @@
     "preview": {
       "android": {
         "buildType": "apk"
+      },
+      "distribution": "internal",
+      "env": {
+        "ENV_FILE": ".env.local"
       }
     },
-    "preview2": {
-      "android": {
-        "gradleCommand": ":app:assembleRelease"
+    "production": {
+      "env": {
+        "ENV_FILE": ".env.production"
       }
-    },
-    "preview3": {
-      "developmentClient": true
-    },
-    "preview4": {
-      "distribution": "internal"
-    },
-    "production": {}
+    }
   }
 }
