@@ -20,11 +20,11 @@ export default function Header({ user }: { user: IUserData }) {
       <View style={styles.header}>
         <View style={styles.headerContent}>
           <View>
-            {user.user_picture ? (
-              <Avatar source={{ uri: user.user_picture }} size={40} />
+            {user.userPicture ? (
+              <Avatar source={{ uri: user.userPicture }} size={40} />
             ) : (
               <Avatar bg="gray300" size={40} color="gray800">
-                {user.user_initials}
+                {user.userInitials}
               </Avatar>
             )}
           </View>

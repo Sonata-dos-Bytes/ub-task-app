@@ -5,6 +5,7 @@ import {
   ScrollView,
   RefreshControl,
   ActivityIndicator,
+  SafeAreaView,
 } from "react-native"
 import { useSession } from "@/src/contexts/auth-context"
 import Header from "@/src/components/header"
@@ -53,7 +54,7 @@ export default function Home() {
   }, [loading]);
 
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       {userData && <Header user={userData} />}
 
       <View style={styles.content}>
@@ -93,7 +94,7 @@ export default function Home() {
           )}
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

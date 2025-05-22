@@ -1,6 +1,7 @@
 import { Task } from "../../../types/task-types";
-import { Link, useLocalSearchParams } from "expo-router";
-import { ActivityIndicator, Linking, Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, View } from "react-native";
+import { Link, useLocalSearchParams, router } from "expo-router";
+import { ActivityIndicator, Linking, Platform, SafeAreaView, ScrollView, StatusBar, StyleSheet, TouchableOpacity, useWindowDimensions, View } from "react-native";
+import { RenderHTML, RenderHTMLProps } from 'react-native-render-html';
 import { Text } from "react-native-paper"
 import { Button } from "react-native-magnus";
 import Colors from "../../../constants/colors"
@@ -9,17 +10,60 @@ import { MaterialIcons } from "@expo/vector-icons"
 
 
 export default function TaskDetails() {
+    const { width } = useWindowDimensions();
     const params = useLocalSearchParams();
     const [loading, setLoading] = useState(false)
     const task: Task = params as unknown as Task;
 
+    const tagsStyles: RenderHTMLProps['tagsStyles'] = {
+        h2: {
+            fontSize: 20,
+            fontWeight: '700',       
+            marginTop: 16,
+            marginBottom: 8,
+        },
+        h3: {
+            fontSize: 18,
+            fontWeight: '600',     
+            marginTop: 12,
+            marginBottom: 6,
+        },
+        p: {
+            fontSize: 16,
+            lineHeight: 24,
+            marginBottom: 12,
+        },
+        ul: {
+            marginVertical: 6,
+            paddingLeft: 16,
+        },
+        li: {
+            fontSize: 16,
+            lineHeight: 22,
+            marginBottom: 4,
+        },
+    };
+
+    const onBack = () => {
+        if (Platform.OS === "web") {
+            window.history.back();
+        } else {
+            router.back();
+        }
+    };
+
     return (
-        <View style={{ flex: 1, backgroundColor: "#fff" }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
             <View style={styles.header}>
                 <View style={styles.textContainer}>
-                    <Text style={{ ...styles.title, fontFamily: "Poppins_700Bold" }}>
-                        {task.title}
-                    </Text>
+                    <View style={styles.headerContent}>
+                        <TouchableOpacity onPress={onBack}>
+                            <MaterialIcons name="arrow-back" size={24} color="#0D1B34" />
+                        </TouchableOpacity>
+                        <Text style={{ ...styles.title, fontFamily: "Poppins_700Bold", paddingHorizontal: 5 }}>
+                            {task.title}
+                        </Text>
+                    </View>
                     <Text style={{ ...styles.subtitle, fontFamily: "Poppins_600SemiBold" }}>
                         {task.matter}
                     </Text>
@@ -41,9 +85,20 @@ export default function TaskDetails() {
                         </Text>
                     </View>
 
-                    <Text style={{ ...styles.descriptionDetails, fontFamily: "Poppins_400Regular" }}>
-                        {task.taskDetails}
-                    </Text>
+                    <RenderHTML
+                        contentWidth={width}
+                        source={{
+                            html: task.taskDetails,
+                        }}
+                        baseStyle={{
+                            fontFamily: "Poppins_400Regular",
+                            color: "#000",
+                            fontSize: 14,
+                            lineHeight: 20,
+                        }}
+                        tagsStyles={tagsStyles}
+                        enableExperimentalMarginCollapsing={true}
+                    />
                 </ScrollView>
 
                 <View style={styles.buttonWrapper}>
@@ -71,7 +126,7 @@ export default function TaskDetails() {
                     </Button>
                 </View>
             </SafeAreaView>
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -87,6 +142,14 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         marginBottom: 10,
         overflow: "hidden",
+    },
+    headerContent: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        width: "100%",
+        gap: 10,
+        marginBottom: 10,
     },
     textContainer: {
         marginTop: 20,
@@ -125,8 +188,13 @@ const styles = StyleSheet.create({
     },
     buttonWrapper: {
         position: "absolute",
-        bottom: 20,
-        left: 16,
-        right: 16,
+        backgroundColor: "#fff",
+        bottom: 0,
+        paddingHorizontal: 16,
+        width: "100%",
+        height: 100,
+        alignItems: "center",
+        justifyContent: "center",
+        paddingVertical: 10,
     },
 });

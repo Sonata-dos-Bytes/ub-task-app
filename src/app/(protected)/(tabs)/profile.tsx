@@ -14,16 +14,16 @@ export default function Profile() {
   const userData = user();
 
   return (
-    <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.content}>
         <View style={styles.profileHeader}>
           <View style={styles.profilePhoto}>
             <View>
-              {userData?.user_picture ? (
-                <Avatar source={{ uri: userData?.user_picture }} size={120} />
+              {userData?.userPicture ? (
+                <Avatar source={{ uri: userData?.userPicture }} size={120} />
               ) : (
                 <Avatar bg="gray300" size={40} color="gray800">
-                  {userData?.user_initials}
+                  {userData?.userInitials}
                 </Avatar>
               )}
             </View>
@@ -68,7 +68,7 @@ export default function Profile() {
           />
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
