@@ -4,11 +4,12 @@ import { MaterialIcons } from "@expo/vector-icons"
 import { Task } from "../types/task-types"
 import { getRandomColor } from "../scripts/color"
 import { useRouter } from "expo-router"
+import { useCountdown } from "../hooks/use-countdown";
 
 const Card = ({ data }: { data: Task }) => {
   const router = useRouter();
-    const [bgColor] = useState(() => getRandomColor());
-
+  const [bgColor] = useState(() => getRandomColor());
+  const { isOverdue, dinamicCountdownText } = useCountdown(data.dateEnd);
 
   const handlePress = () => {
     router.push({
@@ -48,13 +49,14 @@ const Card = ({ data }: { data: Task }) => {
       <View style={styles.divider} />
 
       <View style={styles.footer}>
-        <MaterialIcons name="schedule" size={18} color="#fbbf24" />
+        <MaterialIcons name="schedule" size={18} color={isOverdue ? "#ef4444" : "#fbbf24"} />
         <Text
           style={{
             ...styles.dateText,
             fontFamily: "Poppins_500Medium",
+            color: isOverdue ? "#ef4444" : "#fbbf24",
           }}>
-          {data.dateDetailsInPortuguese}
+          {dinamicCountdownText()}
         </Text>
       </View>
     </Pressable>

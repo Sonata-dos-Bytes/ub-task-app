@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Task } from "@/src/types/task-types";
+import { StatusTask, Task } from "@/src/types/task-types";
 import { handleTasks } from "@/src/scripts/tasks";
 import { useSession } from "@/src/contexts/auth-context";
 import { useStorageState } from "../utils/use-storage-state";
@@ -22,8 +22,6 @@ export function useTasks() {
         }
     }, [session]);
 
-    const hasTasks = tasks && Object.values(tasks).length > 0;
-
     const fetchTasks = useCallback(async () => {
         if (!userData) return;
 
@@ -45,12 +43,35 @@ export function useTasks() {
         setSession(null);
     }, []);
 
+    const getTasksBy = useCallback(
+        ({
+            include,
+            exclude,
+        }: {
+            include?: StatusTask | StatusTask[];
+            exclude?: StatusTask | StatusTask[];
+        }) => {
+            return tasks.filter((task) => {
+                const included = include
+                    ? (Array.isArray(include) ? include : [include]).includes(task.status)
+                    : true;
+
+                const excluded = exclude
+                    ? (Array.isArray(exclude) ? exclude : [exclude]).includes(task.status)
+                    : false;
+
+                return included && !excluded;
+            });
+        },
+        [tasks]
+    );
+
     return {
         tasks,
         loading,
         error,
         fetchTasks,
         clean,
-        hasTasks,
+        getTasksBy
     };
 }

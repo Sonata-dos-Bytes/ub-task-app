@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#9A3234",
   },
   profilePhoto: {
+    marginTop: 12,
     marginBottom: 12,
   },
   title: {

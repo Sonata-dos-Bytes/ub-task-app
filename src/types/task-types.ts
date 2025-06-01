@@ -8,7 +8,9 @@ export interface Task {
     rawEnd: string;
     dateEnd: string;
     daysLeft: number;
-    status: string;
+    status: StatusTask;
     dateDetailsInPortuguese: string;
     taskDetails: string;
 }
+
+export type StatusTask = 'upcoming' | 'due' | 'overdue' | 'completed';
