@@ -3,6 +3,7 @@ export default {
   light: {
     primary: '#8D2C23',        // cor principal da logo
     primaryDark: '#9D3234',    // variação mais escura
+    primaryDarkTransparent: 'rgba(157, 50, 52, 0.09)',
     secondary: '#FFFFFF',      // branco, para textos em cima do primary
     background: '#FFFFFF',     // fundo das telas
     surface: '#F2F2F2',        // cartões, modais, etc.
@@ -10,6 +11,7 @@ export default {
     textLight: '#FFFFFF',      // texto claro
     textDark: '#000000',      // texto escuro
     textLightGray: '#838BA1',  // texto cinza claro
+    borderGray: '#E8ECF4',      // texto cinza
     placeholder: '#888888',    // textos de placeholder
     error: '#FF0000',        // vermelho para erros
     success: '#00FF00',      // verde para sucesso

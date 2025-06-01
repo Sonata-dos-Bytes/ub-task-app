@@ -1,8 +1,8 @@
-import { LoginProps } from "../types/Auth";
+import CustomError from "@/src/utils/custom-error";
 import axios from "axios";
-import { ApiUrl } from "./ApiUrl";
-import { User } from "../types/User";
-import CustomError from "@utils/CustomError";
+import { LoginProps } from "../types/auth-types";
+import { User } from "../types/user-types";
+import { ApiUrl } from "./api-url";
 
 export async function handleLogin({login, password}: LoginProps): Promise<User> {
     try {
@@ -21,13 +21,13 @@ export async function handleLogin({login, password}: LoginProps): Promise<User> 
             };
             return data;
         } else {
-            throw new CustomError(result.data.errors[0], "Error_Login");
+            throw new CustomError("Ocorreu um erro ao fazer login, verifique seu login e senha.", "Error Login");
         }
     } catch (error) {
         console.log("error", error);
         throw new CustomError(
+            "Ocorreu um erro interno, tente novamente mais tarde.",
             "Error Login",
-            "Error_Search_Point"
         );
     }
 }

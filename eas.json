@@ -1,0 +1,18 @@
+{
+  "build": {
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "distribution": "internal",
+      "env": {
+        "ENV_FILE": ".env.local"
+      }
+    },
+    "production": {
+      "env": {
+        "ENV_FILE": ".env.production"
+      }
+    }
+  }
+}
