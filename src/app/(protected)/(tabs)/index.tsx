@@ -16,14 +16,18 @@ import colors from "@/src/constants/colors"
 
 export default function Home() {
   const { user } = useSession()
+  const userData = user()
+
   const {
-    tasks,
     loading,
     error,
     fetchTasks,
-    hasTasks
+    getTasksBy
   } = useTasks();
-  const userData = user()
+  const tasks = getTasksBy({
+    include: ["upcoming", "due"]
+  })
+  const hasTasks = tasks && Object.values(tasks).length > 0;
 
   const [refreshing, setRefreshing] = useState(false)
 

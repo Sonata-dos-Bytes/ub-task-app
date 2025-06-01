@@ -7,6 +7,7 @@ import { Button } from "react-native-magnus";
 import Colors from "../../../constants/colors"
 import { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons"
+import { useCountdown } from "@/src/hooks/use-countdown";
 
 
 export default function TaskDetails() {
@@ -14,17 +15,18 @@ export default function TaskDetails() {
     const params = useLocalSearchParams();
     const [loading, setLoading] = useState(false)
     const task: Task = params as unknown as Task;
+    const { isOverdue, dinamicCountdownText } = useCountdown(task.dateEnd);
 
     const tagsStyles: RenderHTMLProps['tagsStyles'] = {
         h2: {
             fontSize: 20,
-            fontWeight: '700',       
+            fontWeight: '700',
             marginTop: 16,
             marginBottom: 8,
         },
         h3: {
             fontSize: 18,
-            fontWeight: '600',     
+            fontWeight: '600',
             marginTop: 12,
             marginBottom: 6,
         },
@@ -70,9 +72,14 @@ export default function TaskDetails() {
                 </View>
 
                 <View style={styles.date}>
-                    <MaterialIcons name="schedule" size={18} color="#fbbf24" />
-                    <Text style={{ ...styles.dateText, fontFamily: "Poppins_500Medium" }}>
-                        {task.dateDetailsInPortuguese}
+                    <MaterialIcons name="schedule" size={18} color={isOverdue ? "#ef4444" : "#fbbf24"} />
+                    <Text
+                        style={{
+                            ...styles.dateText,
+                            fontFamily: "Poppins_500Medium",
+                            color: isOverdue ? "#ef4444" : "#fbbf24",
+                        }}>
+                        {dinamicCountdownText()}
                     </Text>
                 </View>
             </View>
