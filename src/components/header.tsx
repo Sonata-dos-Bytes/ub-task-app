@@ -28,13 +28,19 @@ export default function Header({ user }: { user: IUserData }) {
               </Avatar>
             )}
           </View>
-          <View>
-            <Text style={{ ...styles.title, fontFamily: "Poppins_400Regular" }}>
+          <View style={{ width: "80%" }}>
+            <Text
+              style={{ ...styles.title, fontFamily: "Poppins_400Regular" }}
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
               Olá,{" "}
-              <Text style={{ fontFamily: "Poppins_600SemiBold" }}>
+              <Text
+                style={{ fontFamily: "Poppins_600SemiBold" }}
+              >
                 {user.name
                   .split(" ")
-                  .slice(0, 2)
+                  .slice(0, 1)
                   .map(
                     (word) =>
                       word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
@@ -43,7 +49,10 @@ export default function Header({ user }: { user: IUserData }) {
               </Text>
             </Text>
             <Text
-              style={{ ...styles.subtitle, fontFamily: "Poppins_500Medium" }}>
+              style={{ ...styles.subtitle, fontFamily: "Poppins_500Medium" }}
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
               R.A: {user.authorization.login}
             </Text>
           </View>

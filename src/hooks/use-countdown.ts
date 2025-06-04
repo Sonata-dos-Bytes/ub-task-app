@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export function useCountdown(targetDate: string) {
   const calculateTimeLeft = () => {
-    const difference = new Date(targetDate).getTime() - new Date().getTime();
+    const targetDateObj = dayjs.tz(targetDate, 'America/Sao_Paulo').utc().toDate();
+    const localTime = new Date();
+    const difference = targetDateObj.getTime() - localTime.getTime();
 
     if (difference <= 0) return null;
 
@@ -18,7 +26,7 @@ export function useCountdown(targetDate: string) {
   const isOverdue = !timeLeft
 
   function formatTimeUnit(value: number, singular: string, plural: string) {
-    return `${value} ${value === 1 ? singular : plural}`;
+    return `${value} ${value <= 1 ? singular : plural}`;
   }
 
   const dinamicCountdownText = () => {
