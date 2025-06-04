@@ -1,50 +1,113 @@
-# Welcome to your Expo app 👋
+# 📱 UB Task App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+UB Task App é um aplicativo mobile desenvolvido em **React Native + Expo** para facilitar o acompanhamento de tarefas acadêmicas da UB Virtual, com visual moderno e integração com a API UB Task.
 
-## Get started
+---
 
-1. Install dependencies
+## 📚 Tabela de Conteúdos
 
+- [📖 Visão Geral](#-visão-geral)
+- [🛠 Tecnologias](#-tecnologias)
+- [⚙️ Configuração](#️-configuração)
+  - [📋 Pré-requisitos](#-pré-requisitos)
+  - [⬇️ Instalação](#️-instalação)
+  - [🎬 Execução Local](#-execução-local)
+  - [📦 Gerar APK (Android)](#-gerar-apk-android)
+- [📒 Sobre](#-sobre)
+- [👨‍💻 Desenvolvedores](#-desenvolvedores)
+
+---
+
+## 📖 Visão Geral
+
+O UB Task App permite:
+
+- Visualizar tarefas acadêmicas da UB Virtual com detalhes de matéria, título, prazos e status.
+- Login seguro e armazenamento local de dados.
+- Interface responsiva e navegação intuitiva.
+
+Ideal para estudantes que desejam organizar e acompanhar suas atividades acadêmicas de forma prática.
+
+---
+
+## 🛠 Tecnologias
+
+- **React Native** & **Expo**
+- **TypeScript**
+- **Expo Router** (navegação)
+- **Expo Secure Store** (armazenamento seguro)
+- **React Hook Form** (formulários)
+- **Day.js** (datas)
+- **@expo-google-fonts/poppins** (tipografia)
+
+---
+
+## ⚙️ Configuração
+
+### 📋 Pré-requisitos
+
+- Node.js >= 18.x
+- npm >= 9.x ou yarn
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- (Para build) [EAS CLI](https://docs.expo.dev/eas/)
+
+### ⬇️ Instalação
+
+1. Clone o repositório e acesse a pasta:
    ```bash
-   npm install
+   git clone https://github.com/Sonata-dos-Bytes/ub-task-app.git
+   cd ub-task-app
    ```
 
-2. Start the app
-
+2. Instale as dependências:
    ```bash
-    npx expo start
+   npm install --force
+   # ou
+   yarn
    ```
 
-In the output, you'll find options to open the app in a
+### 🎬 Execução Local
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1. Inicie o app em modo desenvolvimento:
+   ```bash
+   npx expo start
+   ```
+   - Use um emulador Android/iOS ou o app Expo Go (com limitações).
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+2. Para testar recursos nativos, use um **development build**:
+   ```bash
+   npx expo run:android
+   # ou
+   npx expo run:ios
+   ```
 
-## Get a fresh project
+### 📦 Gerar APK (Android)
 
-When you're ready, run:
+1. Gere o APK para Android (produção):
+   ```bash
+   eas build -p android --profile preview --local
+   ```
+   O arquivo `.apk` estará disponível na pasta de saída indicada pelo EAS.
 
-```bash
-npm run reset-project
-```
+2. Para builds de preview ou distribuição interna, ajuste o perfil no arquivo `eas.json`.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 📒 Sobre
 
-To learn more about developing your project with Expo, look at the following resources:
+Desenvolvido por Pedro Henrique Martins.  
+Contato: pedro.henrique.martins404@gmail.com  
+Repositório: https://github.com/Sonata-dos-Bytes/ub-task-app
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+_Licença: MIT_
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## 👨‍💻 Desenvolvedores
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [@Erikli999](https://github.com/Erikli999) — Erikli999  
+- [@guilherme-felipe123](https://github.com/guilherme-felipe123) — Guilherme Felipe  
+- [@luanklo](https://github.com/luanklo) — Luan Jacomini Kloh  
+- [@Matheuz233](https://github.com/Matheuz233) — Matheus Augusto  
+- [@piedro404](https://github.com/piedro404) — Pedro Henrique Martins Borges  
+- [@thayna-bezerra](https://github.com/thayna-bezerra) — Thayna Bezerra  
