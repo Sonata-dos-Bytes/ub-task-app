@@ -95,11 +95,9 @@ Ideal para estudantes que desejam organizar e acompanhar suas atividades acadêm
 
 ## 📒 Sobre
 
-Desenvolvido por Pedro Henrique Martins.  
+Desenvolvido por Sonata dos Bytes.  
 Contato: pedro.henrique.martins404@gmail.com  
 Repositório: https://github.com/Sonata-dos-Bytes/ub-task-app
-
-_Licença: MIT_
 
 ---
 
