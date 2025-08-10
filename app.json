@@ -2,7 +2,7 @@
   "expo": {
     "name": "UB Task",
     "slug": "ub-task-app",
-    "version": "2.0.0",
+    "version": "2.0.2",
     "orientation": "portrait",
     "icon": "src/assets/images/icon.png",
     "scheme": "myapp",
@@ -14,7 +14,7 @@
     },
     "android": {
       "permissions": [],
-      "versionCode": 3,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
