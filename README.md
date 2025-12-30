@@ -1,5 +1,7 @@
 # 📱 UB Task App
 
+<img width="1920" height="1080" alt="Pitch UB Task - Auditorio" src="https://github.com/user-attachments/assets/9c9e1566-1d1c-4044-952f-3240e83b8c5a" />
+
 UB Task App é um aplicativo mobile desenvolvido em **React Native + Expo** para facilitar o acompanhamento de tarefas acadêmicas da UB Virtual, com visual moderno e integração com a API UB Task.
 
 ---
